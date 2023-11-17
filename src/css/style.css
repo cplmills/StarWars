@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Roboto:ital,wght@0,300;1,300&display=swap');
+
+@font-face {
+    font-family: 'Death Star';
+    src: url('../fonts/DeathStar.woff2') format('woff2'),
+        url('../fonts/DeathStar.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('../images/backgrounds/star-wars-plzcoaffexgf4h81.jpg');
+    background-color: rgb(0, 0, 0);
+    background-position: top center;
+    background-repeat: no-repeat;
+    font-family: Quicksand, Roboto, system-ui;
+}
+
+a {
+    text-decoration: none;
+    padding: 10px;
+}
+
+header {
+    height: 10rem;
+}
+
+header h1 {
+    text-align: center;
+    padding-top: 2.5rem;
+    font-family: 'Death Star';
+    font-size: 5rem;
+    color: white;
+    animation: neon .08s ease-in-out infinite alternate;
+}
+
+@keyframes neon {
+    from {
+      text-shadow:
+      0 0 6px rgba(202,228,225,0.92),
+      0 0 30px rgba(202,228,225,0.34),
+      0 0 12px rgba(30,132,242,0.52),
+      0 0 21px rgba(30,132,242,0.92),
+      0 0 34px rgba(30,132,242,0.78),
+      0 0 54px rgba(30,132,242,0.92);
+    }
+    to {
+      text-shadow:
+      0 0 6px rgba(202,228,225,0.98),
+      0 0 30px rgba(202,228,225,0.42),
+      0 0 12px rgba(30,132,242,0.58),
+      0 0 22px rgba(30,132,242,0.84),
+      0 0 38px rgba(30,132,242,0.88),
+      0 0 60px rgba(30,132,242,1);
+    }
+  }
+
+main, header, nav, #search {
+    background-color: rgba(158,45,34,0.5);
+    border: 2px solid white;
+    width: 90%;
+    min-height: 100%;
+    margin: 0 auto;
+    margin-top: 1rem;
+    border-radius: 1rem;
+}
+
+#search input {
+    margin: 1rem;
+}
+
+#search p, main p {
+    font-family: Quicksand, Roboto, system-ui;
+    color: white;
+    font-weight: bolder;
+    margin: 1rem;
+    display: inline-block;
+}
+
+#search input {
+    width: 20rem;
+    border-radius: .5rem;
+    height: 2rem;
+    padding-left: 1rem;
+    box-shadow: 0 0 15px 4px rgba(30,132,242, 0.06);
+
+}
+
+#search input:hover {
+    box-shadow: 0 0 15px 4px rgba(30,132,242, 0.06);
+
+}
+
+nav ul {
+    display: flex;
+    margin: auto;
+    width: fit-content;    
+}
+
+nav a {
+    color: white;
+}
+
+nav ul li div img, nav ul li div a {
+    display: block;
+    max-width: 10rem;
+    text-align: center;
+}
+
+nav ul li div img {
+    height: 8rem;
+    transition: all 0.2s ease-in-out;
+}
+
+nav ul li div img:hover {
+    color: rgba(255, 255, 255, 1);
+    -webkit-filter: drop-shadow(5px 5px 5px rgba(30,132,242,1));
+    filter: drop-shadow(5px 5px 5px rgb(254, 254, 254));
+}
+
+nav div {
+    display: block;
+    float: clear;
+    padding-top: 1rem;
+}
+
+nav div p {
+    display: block;
+}
+
+nav ul li div {
+    padding-left: 3rem;
+}
+
+main {
+    clear: both;
+    overflow: auto;
+}
+
+main img {
+    width: 12rem;
+    float: left;
+    padding: 2rem;
+}
+
+main p {
+    padding-top: 1rem;
+    padding-right: 1rem;
+    display: block;
+}
