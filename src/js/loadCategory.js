@@ -1,4 +1,4 @@
-import { getAssetsFromExternal, getCombinedJSON } from "./external_services.mjs";
+import { getAssetsFromExternal } from "./external_services.mjs";
 import { addTile } from "./categories.mjs";
 import { getParam } from "./utils.mjs";
 
