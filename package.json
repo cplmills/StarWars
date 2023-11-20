@@ -1,5 +1,5 @@
 {
-  "name": "StarWars",
+  "name": "starwars",
   "version": "1.0.0",
   "description": "StarWars Encyclopedia",
   "main": "main.js",
@@ -32,5 +32,8 @@
     "last 3 opera versions",
     "last 3 ios_saf versions",
     "last 3 safari versions"
-  ]
+  ],
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
 }

@@ -8,7 +8,7 @@
         {
             "title": "Spaceships",
             "icon": "../images/spaceships_icon.webp",
-            "parameter": "spaceships"
+            "parameter": "starships"
         },
         {
             "title": "Vehicles",
@@ -19,11 +19,6 @@
             "title": "People",
             "icon": "../images/people_icon.png",
             "parameter": "people"
-        },
-        {
-            "title": "Films",
-            "icon": "../images/films_icon.jpeg",
-            "parameter": "films"
         },
         {
             "title": "Species",

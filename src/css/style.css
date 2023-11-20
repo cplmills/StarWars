@@ -18,6 +18,7 @@ body {
     background-color: rgb(0, 0, 0);
     background-position: top center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: Quicksand, Roboto, system-ui;
 }
 
@@ -96,10 +97,16 @@ main, header, nav, #search {
 
 }
 
+nav {
+    overflow: hidden;
+}
+
 nav ul {
     display: flex;
     margin: auto;
-    width: fit-content;    
+    width: fit-content; 
+    flex-wrap: wrap;
+    flex-direction: row;   
 }
 
 nav a {
@@ -108,7 +115,7 @@ nav a {
 
 nav ul li div img, nav ul li div a {
     display: block;
-    max-width: 10rem;
+    max-width: 8rem;
     text-align: center;
 }
 
@@ -142,7 +149,7 @@ main {
     overflow: auto;
 }
 
-main img {
+main #indeximg {
     width: 12rem;
     float: left;
     padding: 2rem;
@@ -152,4 +159,54 @@ main p {
     padding-top: 1rem;
     padding-right: 1rem;
     display: block;
+}
+
+.element-image img{
+    width: 22rem;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border: 1px solid white;
+}
+
+.tile {
+    display: flex;
+    align-items: stretch;
+    width: 27rem;
+}
+
+.element-image {
+    display:block;
+    padding: 1rem;
+    border: 3px solid white;
+    float: left;
+    margin: 1rem;
+    border-radius: 1rem;
+    background-color: rgba(0,0,0,0.6);
+}
+
+#grid-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.tile-table {
+    width: 22rem;
+    min-width: 22rem;
+    margin: auto;
+}
+
+.tile-table td, .tile-table tr {
+    border: 1px solid white;
+    padding: 4px;
+}
+
+.tile-table tr {
+    color: white;
+}
+
+.tile-table tr:nth-child(even){
+    background-color: azure;
+    color: black;
 }
