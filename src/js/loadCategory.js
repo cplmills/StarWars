@@ -15,18 +15,18 @@ async function loadAssets() {
     }
 
     let pagination = document.createElement("ul");
-    let currentPageIndex = getParam("page");
+    let currentPageIndex = parseInt(getParam("page"));
     let currentURL = new URL(window.location.href);
     if (currentPageIndex === null){
         currentPageIndex = 1;
     }
-
     // paint page numbers and set page number
     for (let i = 1; i < pageCount / 10; i++) {
         let newLi = document.createElement("li");
         let newA = document.createElement("a");
         if (i === currentPageIndex) {
             newA.setAttribute("href", "#");
+            newA.setAttribute("class", "active");
         } else {
             currentURL.searchParams.set("page", i);
             newA.setAttribute("href", `${currentURL}`);
