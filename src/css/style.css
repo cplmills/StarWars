@@ -276,3 +276,34 @@ main p {
       opacity: .5;
     }
   }
+
+  #pagination {
+    display: block;
+    margin: auto;
+    border: 1px solid white;
+    
+  }
+
+  #pagination ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+  
+  #pagination a {
+    display: inline-flex;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px;
+    margin: 0 4px;
+    font-size: 1.4rem;
+    transition: text-shadow 0.3s ease-in-out;
+  }
+
+  #pagination a:hover {
+    color: black;
+    text-shadow: 0 0 10px white;
+  }

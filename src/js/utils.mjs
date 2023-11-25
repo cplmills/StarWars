@@ -6,6 +6,13 @@ export function getParam(parameter){
     return product;
   }
 
+  export function setParameter(parameter, value){
+    let currentParameter = getParam(parameter);
+    if (currentParameter === null) {
+        window.location.href = window.location.href + "&" + parameter + "=" + value;
+    }
+  }
+
   export function getKeys(object) {
     console.log(Object.keys(object));
     return Object.keys(object);

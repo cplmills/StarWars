@@ -15,6 +15,7 @@ export async function getAssetsFromExternal(asset, dataOrImage ) {
     try {
         const response = await fetch(baseURL);
         const data = await response.json();
+        console.log(data);
         return data;
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -77,4 +78,8 @@ export async function getCombinedJSON(name, category) {
     }
 
     return result.results[0];
+}
+
+export async function getPageCount(data) {
+
 }
