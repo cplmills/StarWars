@@ -9,13 +9,33 @@ export function getURL(type){
     }
 }
 
-export async function getAssetsFromExternal(asset, dataOrImage ) {
-    let baseURL = getURL(dataOrImage) + asset;
+function returnParametersAsArray(){
+    const urlString = window.location.href;
+    const url = new URL(urlString);
+    const params = new URLSearchParams(url.search);
+    const parametersArray = [];
+    for (const [name, value] of params) {
+        parametersArray.push({name, value});
+    }
+    return parametersArray;
+}
+
+function encodeParametersFromArray(baseUrl, parametersArray){
+    const params = new URLSearchParams();
+    parametersArray.forEach(param => {
+      params.append(param.name, param.value);
+    });
+     
+    const encodedUrl = `${baseUrl}?${params.toString()}`;
+    return encodedUrl;
     
+}
+
+export async function getAssetsFromExternal(asset, dataOrImage, options = returnParametersAsArray()) {
+    let baseURL = encodeParametersFromArray(getURL(dataOrImage) + asset, options);
     try {
         const response = await fetch(baseURL);
         const data = await response.json();
-        console.log(data);
         return data;
     } catch (error) {
         console.error('Error fetching data:', error);
