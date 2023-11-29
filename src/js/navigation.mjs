@@ -29,6 +29,5 @@ function appendMenuItem(menuItem) {
     newDiv.appendChild(newLink);
     newLi.appendChild(newDiv);
     selector.appendChild(newLi);
-
 }
 
