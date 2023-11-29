@@ -1,0 +1,30 @@
+{ 
+    "menu_item": [
+        {
+            "title": "Planets",
+            "icon": "../images/planet_icon.png",
+            "parameter": "planets"
+        },
+        {
+            "title": "Spaceships",
+            "icon": "../images/spaceships_icon.webp",
+            "parameter": "starships"
+        },
+        {
+            "title": "Vehicles",
+            "icon": "../images/vehicles_icon.png",
+            "parameter": "vehicles"
+        },
+        {
+            "title": "People",
+            "icon": "../images/people_icon.png",
+            "parameter": "people"
+        },
+        {
+            "title": "Species",
+            "icon": "../images/species_icon.webp",
+            "parameter": "species"
+        }
+    ]
+
+}
