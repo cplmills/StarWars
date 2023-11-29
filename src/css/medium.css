@@ -8,5 +8,68 @@
         font-family: Quicksand, Roboto, system-ui;
     }
    
+    nav {
+        overflow: hidden;
+    }
+    
+    nav ul {
+        display: flex;
+        margin: auto;
+        width: fit-content; 
+        flex-wrap: wrap;
+        flex-direction: row;   
+    }
+    
+    nav a {
+        color: white;
+    }
+    
+    nav ul li div a p {
+        text-align: center;
+    }
+    
+    nav ul li div a img {
+        max-width: 5rem;
+        height: 5rem;
+    }
+
+    nav ul li div a p {
+        float: none;
+        vertical-align: middle;
+    }
+
+    nav ul li div img:hover {
+        color: rgba(255, 255, 255, 1);
+        -webkit-filter: drop-shadow(5px 5px 5px rgba(30,132,242,1));
+        filter: drop-shadow(5px 5px 5px rgb(254, 254, 254));
+    }
+    
+    nav div {
+        display: block;
+        float: clear;
+        padding-top: 1rem;
+    }
+
+    nav ul div:hover {
+        border: 0;
+    }
+    
+    nav div p {
+        display: block;
+    }
+    
+    nav ul li div {
+        padding: 0rem 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #search p, main p {
+        margin: 1rem 1rem 0rem 1rem;
+    }
+
+    #search p {
+        display: inline-block;
+    }
 
 }

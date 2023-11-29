@@ -19,13 +19,13 @@ function appendMenuItem(menuItem) {
 
     let newLi = document.createElement("li");
     let newDiv = document.createElement("div");
-    let newIMG = document.createElement("img");
-    newIMG.setAttribute("src", menuItem.icon);
+    // let newIMG = document.createElement("img");
+    // newIMG.setAttribute("src", menuItem.icon);
     let newLink = document.createElement("a");
+    
     newLink.setAttribute("href","../categories.html?category=" + menuItem.parameter);
-    newLink.text = menuItem.title;
-
-    newDiv.appendChild(newIMG);
+    newLink.innerHTML = `<img src="${menuItem.icon}"></img><p>${menuItem.title}</p>`;
+        
     newDiv.appendChild(newLink);
     newLi.appendChild(newDiv);
     selector.appendChild(newLi);

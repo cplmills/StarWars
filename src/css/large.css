@@ -1,7 +1,15 @@
 @media only screen and (min-width:1200px){
   body {
       background-image: url('../images/backgrounds/star-wars-millennium-falcon-star-wars-the-force-awakens-c-3po-wallpaper-preview.jpg');
+      background-size: cover;
   }
+
+  nav ul li div a img {
+    max-width: 8rem;
+    height: 8rem;
+    transition: all 0.2s ease-in-out;
+}
+
 
 }
 

@@ -38,6 +38,7 @@ header h1 {
     font-size: 5rem;
     color: white;
     animation: neon .08s ease-in-out infinite alternate;
+    margin: auto;
 }
 
 @keyframes neon {
@@ -62,7 +63,7 @@ header h1 {
   }
 
 main, header, nav, #search {
-    background-color: rgba(158,45,34,0.5);
+    background-color: rgba(158,45,34,0.8);
     border: 2px solid white;
     width: 90%;
     min-height: 100%;
@@ -73,14 +74,15 @@ main, header, nav, #search {
 
 #search input {
     margin: 1rem;
+    min-width: 94%;
 }
 
 #search p, main p {
     font-family: Quicksand, Roboto, system-ui;
     color: white;
-    font-weight: bolder;
     margin: 1rem;
     display: inline-block;
+    display: none;
 }
 
 #search input {
@@ -101,33 +103,45 @@ nav {
     overflow: hidden;
 }
 
-nav ul {
-    display: flex;
-    margin: auto;
-    width: fit-content; 
-    flex-wrap: wrap;
-    flex-direction: row;   
-}
-
 nav a {
     color: white;
 }
 
-nav ul li div img, nav ul li div a {
-    display: block;
-    max-width: 8rem;
-    text-align: center;
+nav ul div {
+  display: inline-block;
+  width: 100%;
 }
 
-nav ul li div img {
-    height: 8rem;
+nav ul li div {
+  padding-left: 2rem;
+}
+
+@media only screen and (max-width:600px) {
+  nav ul div:hover {
+    background-color: crimson;
+  }
+}
+
+nav ul li div a img {
+    float: left;
+    max-width: 3rem;
     transition: all 0.2s ease-in-out;
 }
 
-nav ul li div img:hover {
+nav ul li div a p {
+  float: left;
+  vertical-align: middle;
+}
+
+nav ul li div a img:hover {
     color: rgba(255, 255, 255, 1);
     -webkit-filter: drop-shadow(5px 5px 5px rgba(30,132,242,1));
     filter: drop-shadow(5px 5px 5px rgb(254, 254, 254));
+}
+
+nav ul {
+  margin-block-start: 0;
+  padding: 0;
 }
 
 nav div {
@@ -138,10 +152,6 @@ nav div {
 
 nav div p {
     display: block;
-}
-
-nav ul li div {
-    padding-left: 3rem;
 }
 
 main {
