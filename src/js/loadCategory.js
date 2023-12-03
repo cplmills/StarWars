@@ -17,7 +17,7 @@ async function loadAssets() {
   let pagination = document.createElement("ul");
   let currentPageIndex = parseInt(getParam("page"));
   let currentURL = new URL(window.location.href);
-  if (currentPageIndex === null) {
+  if (currentPageIndex === null || isNaN(currentPageIndex)) {
     currentPageIndex = 1;
   }
   // paint page numbers and set page number
