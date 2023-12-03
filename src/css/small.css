@@ -110,6 +110,11 @@ nav ul div {
   width: 100%;
 }
 
+nav ul li {
+  text-decoration: none;
+  list-style: none;
+}
+
 nav ul li div {
   padding-left: 2rem;
 }
@@ -223,6 +228,19 @@ main p {
   content: "\2605";
   font-size: 32px;
   position: absolute;
+}
+
+.tile-button {
+  display: block;
+  clear: both;
+  float: left;
+  width: 100%;
+  background-color: red;
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: .5rem;
+  color: white;
+
 }
 
 .loader_wrapper {

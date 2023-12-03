@@ -1,5 +1,5 @@
 import { getAssetFromExternal, getAttributes, getCombinedJSON } from "./external_services.mjs";
-import { proper, addItemToFavorites, getParam } from "./utils.mjs";
+import { proper, addItemToFavorites, getParam, checkForItemInFavorites } from "./utils.mjs";
 
 export async function addTile(data, selector, category) {
     // create a new tile to be added to the page
@@ -21,9 +21,16 @@ export async function addTile(data, selector, category) {
 
     let newButton = document.createElement("button");
         newButton.setAttribute("class", "tile-button");
-        newButton.innerText = "☆";
+
+        const isInFavorites = checkForItemInFavorites(data);
+        if (isInFavorites) {
+            newButton.innerText = "Remove From Favorites";
+            newButton.addEventListener("click", (e) => {addToFavoritesHandler(e)});
+        } else {
+           newButton.innerText = "☆ Add to Favorites";
+           newButton.addEventListener("click", (e) => {addToFavoritesHandler(e)});
+        }
         newButton.setAttribute("data-id", data.name);
-        newButton.addEventListener("click", (e) => {addToFavoritesHandler(e)});
 
     // Loop through elements
     let showElements = getAttributes(category);
@@ -38,8 +45,8 @@ export async function addTile(data, selector, category) {
         newTable.appendChild(newTr);
     }  
     newDiv.appendChild(newElement);
+    newElement.appendChild(newButton);
     selector.appendChild(newDiv);
-    selector.appendChild(newButton);
     
 }
 

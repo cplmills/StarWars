@@ -60,3 +60,11 @@ export function getParam(parameter = undefined){
     setLocalStorage("sw-favorites", favoriteItems);
   }
 
+export function checkForItemInFavorites(item) {
+    const favoriteItems = getLocalStorage("sw-favorites") || [];
+    const existingItemIndex = favoriteItems.findIndex(
+      (element) => element.results[0].name === item.name);
+
+    if (existingItemIndex === -1) return false;
+    return true;  
+}
