@@ -1,4 +1,9 @@
+import { getLocalStorage } from "./utils.mjs";
+
 export async function loadNavBar(){
+    let selector = document.querySelector("#nav_ul");
+    selector.innerHTML = "";
+
     readJson().then(menuItems => {
         menuItems.map(appendMenuItem);
     });
@@ -15,12 +20,14 @@ async function readJson() {
 }
 
 function appendMenuItem(menuItem) {
+    if (menuItem.title === "Favorites") {
+        const showFavorites = getLocalStorage("sw-favorites").length;
+        if (showFavorites <= 0)  return;
+    }
     let selector = document.querySelector("#nav_ul");
 
     let newLi = document.createElement("li");
     let newDiv = document.createElement("div");
-    // let newIMG = document.createElement("img");
-    // newIMG.setAttribute("src", menuItem.icon);
     let newLink = document.createElement("a");
     
     newLink.setAttribute("href","../categories.html?category=" + menuItem.parameter);

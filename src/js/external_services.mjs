@@ -100,7 +100,3 @@ export async function getCombinedJSON(name, category) {
 
     return result.results[0];
 }
-
-export async function getPageCount(data) {
-
-}

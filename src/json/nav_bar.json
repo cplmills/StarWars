@@ -24,6 +24,11 @@
       "title": "Species",
       "icon": "../images/species_icon.webp",
       "parameter": "species"
+    },
+    {
+      "title": "Favorites",
+      "icon": "../images/favorites_icon.png",
+      "parameter": "favorites"
     }
   ]
 }

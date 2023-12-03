@@ -1,11 +1,13 @@
 import { getAssetFromExternal, getAttributes, getCombinedJSON } from "./external_services.mjs";
-import { proper, addItemToFavorites, getParam, checkForItemInFavorites, getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { loadNavBar } from "./navigation.mjs";
+import { proper, getParam, getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { addItemToFavorites, checkForItemInFavorites, favoritesHandler } from "./favorites";
 
 export async function addTile(data, selector, category) {
     // create a new tile to be added to the page
     let newDiv = document.createElement("div");
     newDiv.setAttribute("class", "tile");
-
+    let existsInFavorites = checkForItemInFavorites(data.name);
     let newData = await getCombinedJSON(data.name, category);
     let newElement = document.createElement("div");
         newElement.setAttribute("class", "element-image");
@@ -19,19 +21,27 @@ export async function addTile(data, selector, category) {
         newTable.setAttribute("class", "tile-table");
         newElement.appendChild(newTable);
 
-    let newButton = document.createElement("button");
-        newButton.setAttribute("class", "tile-button");
-
-        const isInFavorites = checkForItemInFavorites(data);
-        if (isInFavorites) {
-            // console.log(data.name + " is in favorites");
-            newButton.innerText = "Remove From Favorites";
-            newButton.addEventListener("click", (e) => {favoritesHandler(e, false)});
+        let newAddButton = document.createElement("button");
+        if (existsInFavorites) {
+            newAddButton.setAttribute("class", "tile-button hidden");
         } else {
-            newButton.innerText = "☆ Add to Favorites";
-           newButton.addEventListener("click", (e) => {favoritesHandler(e, true)});
+            newAddButton.setAttribute("class", "tile-button");
         }
-        newButton.setAttribute("data-id", data.name);
+        newAddButton.addEventListener("click", (e) => {favoritesHandler(e)});
+        newAddButton.innerText = "☆ Add to Favorites";
+        newAddButton.setAttribute("data-id", data.name);
+        newAddButton.setAttribute("data-action", "add");
+        
+        let newRemoveButton = document.createElement("button");
+        if (existsInFavorites) {
+            newRemoveButton.setAttribute("class", "tile-button");
+        } else {
+            newRemoveButton.setAttribute("class", "tile-button hidden");
+        }        
+        newRemoveButton.addEventListener("click", (e) => {favoritesHandler(e)});
+        newRemoveButton.innerText = "Remove From Favorites";
+        newRemoveButton.setAttribute("data-id", data.name);
+        newRemoveButton.setAttribute("data-action", "remove");
 
     // Loop through elements
     let showElements = getAttributes(category);
@@ -46,7 +56,8 @@ export async function addTile(data, selector, category) {
         newTable.appendChild(newTr);
     }  
     newDiv.appendChild(newElement);
-    newElement.appendChild(newButton);
+    newElement.appendChild(newAddButton);
+    newElement.appendChild(newRemoveButton);
     selector.appendChild(newDiv);
     
 }
@@ -67,27 +78,4 @@ export function translateCategory(input) {
     } else {
         return "spaceships";
     }
-}
-
-async function favoritesHandler(e, add) {
-    // adds a favorite if add = true, otherwise removes it
-    e.target.innerHTML = "Processing...";
-    console.log(add);
-    if (add) {
-        const item = await getAssetFromExternal(e.target.dataset.id, getParam("category"), "data");
-        addItemToFavorites(item);
-        e.target.innerHTML = "Remove From Favorites";
-    } else {
-        removeItemFromFavorites(e.target.dataset.id);
-        e.target.innerHTML = "☆ Add To Favorites";
-    }
-}
-
-
-function removeItemFromFavorites(id) {
-    const localArray = getLocalStorage("sw-favorites");
-    console.log(localArray);
-    const existingItemIndex = localArray.findIndex((element) => element.results[0].name === id);
-    localArray.splice(existingItemIndex, 1);
-    setLocalStorage("sw-favorites",localArray);
 }

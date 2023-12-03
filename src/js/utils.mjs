@@ -42,29 +42,3 @@ export function getParam(parameter = undefined){
     localStorage.setItem(key, JSON.stringify(data));
   }
 
-  export function addItemToFavorites(item) {
-    // Retrieve the current cart from local storage
-    const favoriteItems = getLocalStorage("sw-favorites") || [];
-
-    // Check if the item is already in the cart
-    const existingItemIndex = favoriteItems.findIndex(
-      (element) => element.results[0].name === item.results[0].name);
-      
-    if (existingItemIndex === -1) {
-      // If the item is not in the cart, add it with a quantity of 1
-      favoriteItems.push(item);
-      console.log("added item to favorites");
-    }
-
-    // Update the cart in local storage
-    setLocalStorage("sw-favorites", favoriteItems);
-  }
-
-export function checkForItemInFavorites(item) {
-    const favoriteItems = getLocalStorage("sw-favorites") || [];
-    const existingItemIndex = favoriteItems.findIndex(
-      (element) => element.results[0].name === item.name);
-
-    if (existingItemIndex === -1) return false;
-    return true;  
-}

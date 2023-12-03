@@ -15,6 +15,10 @@
   box-sizing: border-box;
 }
 
+.hidden {
+  display: none!important;
+}
+
 body {
   background-image: url("../images/backgrounds/small.jpg");
   background-color: rgb(0, 0, 0);
