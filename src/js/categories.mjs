@@ -69,7 +69,8 @@ export function translateCategory(input) {
 }
 
 async function addToFavoritesHandler(e) {
+    e.target.innerHTML = "Adding To Favorites";
     const item = await getAssetFromExternal(e.target.dataset.id, getParam("category"), "data");
-    console.log(item);
     addItemToFavorites(item);
+    e.target.innerHTML = "Remove From Favorites";
 }
