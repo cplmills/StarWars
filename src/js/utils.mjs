@@ -1,9 +1,11 @@
-export function getParam(parameter){
-    if (!parameter) return "creatures";
+export function getParam(parameter = undefined){
+    // Return the selected parameter, if no parameter is suppied, return all parameters
+    //if (!parameter) return "creatures";
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const product = urlParams.get(parameter);
-    return product;
+    if (!parameter) return urlParams;
+    const paramValue = urlParams.get(parameter);
+    return paramValue;
   }
 
   export function setParameter(parameter, value){
@@ -30,5 +32,31 @@ export function getParam(parameter){
             return match.toUpperCase();
         }
     );
-}
-  
+  }
+
+  export function getLocalStorage(key) {
+    return JSON.parse(localStorage.getItem(key));
+  }
+  // save data to local storage
+  export function setLocalStorage(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+  }
+
+  export function addItemToFavorites(item) {
+    // Retrieve the current cart from local storage
+    const favoriteItems = getLocalStorage("sw-favorites") || [];
+
+    // Check if the item is already in the cart
+    const existingItemIndex = favoriteItems.findIndex(
+      (element) => element.results[0].name === item.results[0].name);
+      
+    if (existingItemIndex === -1) {
+      // If the item is not in the cart, add it with a quantity of 1
+      favoriteItems.push(item);
+      console.log("added item to favorites");
+    }
+
+    // Update the cart in local storage
+    setLocalStorage("sw-favorites", favoriteItems);
+  }
+

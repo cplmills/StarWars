@@ -1,5 +1,5 @@
-import { getAssetFromExternal, getAttribute, getAttributes, getCombinedJSON } from "./external_services.mjs";
-import { proper } from "./utils.mjs";
+import { getAssetFromExternal, getAttributes, getCombinedJSON } from "./external_services.mjs";
+import { proper, addItemToFavorites, getParam } from "./utils.mjs";
 
 export async function addTile(data, selector, category) {
     // create a new tile to be added to the page
@@ -19,9 +19,15 @@ export async function addTile(data, selector, category) {
         newTable.setAttribute("class", "tile-table");
         newElement.appendChild(newTable);
 
+    let newButton = document.createElement("button");
+        newButton.setAttribute("class", "tile-button");
+        newButton.innerText = "☆";
+        newButton.setAttribute("data-id", data.name);
+        newButton.addEventListener("click", (e) => {addToFavoritesHandler(e)});
+
     // Loop through elements
     let showElements = getAttributes(category);
-    let newLine = "";
+    //let newLine = "";
 
     for ( let i = 0; i < showElements.length; i++) {
         let attribName = showElements[i];
@@ -33,6 +39,8 @@ export async function addTile(data, selector, category) {
     }  
     newDiv.appendChild(newElement);
     selector.appendChild(newDiv);
+    selector.appendChild(newButton);
+    
 }
 
 export function translateCategory(input) {
@@ -51,4 +59,10 @@ export function translateCategory(input) {
     } else {
         return "spaceships";
     }
+}
+
+async function addToFavoritesHandler(e) {
+    const item = await getAssetFromExternal(e.target.dataset.id, getParam("category"), "data");
+    console.log(item);
+    addItemToFavorites(item);
 }

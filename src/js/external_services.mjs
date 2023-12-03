@@ -43,6 +43,7 @@ export async function getAssetsFromExternal(asset, dataOrImage, options = return
 }
 
 export async function getAssetFromExternal(asset, assetCategory, dataOrImage ) {
+// searches for either data or images for a particular asset Category and asset
     let baseURL = getURL(dataOrImage) + assetCategory;
     if ( dataOrImage === "data" ) {
         baseURL +=     "/?search=" + asset;

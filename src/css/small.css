@@ -219,6 +219,12 @@ main p {
   color: black;
 }
 
+.tile-star {
+  content: "\2605";
+  font-size: 32px;
+  position: absolute;
+}
+
 .loader_wrapper {
   display: inline-block;
   position: relative;
@@ -274,7 +280,7 @@ main p {
 
 @keyframes blink {
   0% {
-    opacity: 0.5;
+    opacity: 0.1;
   }
   50% {
     opacity: 1;
