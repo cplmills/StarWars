@@ -22,18 +22,22 @@ function returnParametersAsArray(){
 
 function encodeParametersFromArray(baseUrl, parametersArray){
     const params = new URLSearchParams();
-    parametersArray.forEach(param => {
-      params.append(param.name, param.value);
-    });
-     
+
+    if (parametersArray.length > 0) {
+        parametersArray.forEach(param => {
+        params.append(param.name, param.value);
+        });
+    } else {
+        return baseUrl;
+    }
     const encodedUrl = `${baseUrl}?${params.toString()}`;
     return encodedUrl;
-    
 }
 
 export async function getAssetsFromExternal(asset, dataOrImage, options = returnParametersAsArray()) {
-    let baseURL = encodeParametersFromArray(getURL(dataOrImage) + asset, options);
+    let baseURL = encodeParametersFromArray(getURL(dataOrImage) + (asset ? asset : ""), options);
     try {
+        console.log(baseURL); 
         const response = await fetch(baseURL);
         const data = await response.json();
         return data;

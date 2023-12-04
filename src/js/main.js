@@ -1,2 +1,3 @@
-import { loadNavBar } from "./navigation.mjs";
+import { loadNavBar, loadSearchBar } from "./navigation.mjs";
 loadNavBar();
+loadSearchBar();

@@ -75,9 +75,23 @@ nav,
   border-radius: 1rem;
 }
 
-#search input {
-  margin: 1rem;
+#search input{
+  margin: .8rem;
   min-width: 50%;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: .3rem;
+  padding: 2px;
+  padding-left: 10px;
+}
+
+#search select {
+  margin: 1rem;
+  font-size: 16px;
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 0.3rem;
 }
 
 #search p,
@@ -89,13 +103,7 @@ main p {
   display: none;
 }
 
-#search input {
-  width: 20rem;
-  border-radius: 0.5rem;
-  height: 2rem;
-  padding-left: 1rem;
-  box-shadow: 0 0 15px 4px rgba(30, 132, 242, 0.06);
-}
+
 
 #search input:hover {
   box-shadow: 0 0 15px 4px rgba(30, 132, 242, 0.06);

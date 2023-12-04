@@ -43,10 +43,18 @@ function appendMenuItem(menuItem) {
 }
 
 export function loadSearchBar() {
-    const searchBar = document.querySelector("search");
+    const searchBar = document.querySelector("#search");
     searchBar.innerHTML = `
     <form id="frmSearch">
         <p>Search the Star Wars Wiki:</p>
+        <select id="categoryDropdown">
+            <option value="planets">Planets</option>
+            <option value="spaceships">Spaceships</option>
+            <option value="vehicles">Vehicles</option>
+            <option value="people">People</option>
+            <option value="species">Species</option>
+        </select>
         <input type="search" placeholder="Search Here..." />
-    </form>`;
+    </form>
+    `;
 }
