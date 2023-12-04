@@ -77,7 +77,7 @@ nav,
 
 #search input {
   margin: 1rem;
-  min-width: 94%;
+  min-width: 50%;
 }
 
 #search p,

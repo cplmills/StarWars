@@ -35,6 +35,7 @@ export function removeItemFromFavorites(id) {
 
 export function addItemToFavorites(item) {
     // Retrieve the current cart from local storage
+    item.results[0].category = getParam("category");
     const favoriteItems = getLocalStorage("sw-favorites") || [];
 
     // Check if the item is already in the cart
@@ -43,6 +44,7 @@ export function addItemToFavorites(item) {
 
     if (existingItemIndex === -1) {
       // If the item is not in the cart, add it with a quantity of 1
+      
       favoriteItems.push(item);
       // Update the cart in local storage
       setLocalStorage("sw-favorites", favoriteItems);

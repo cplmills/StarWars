@@ -30,7 +30,11 @@ function appendMenuItem(menuItem) {
     let newDiv = document.createElement("div");
     let newLink = document.createElement("a");
     
-    newLink.setAttribute("href","../categories.html?category=" + menuItem.parameter);
+    if (menuItem.title === "Favorites") {
+        newLink.setAttribute("href","../favorites.html");
+    } else {
+        newLink.setAttribute("href","../categories.html?category=" + menuItem.parameter);
+    }
     newLink.innerHTML = `<img src="${menuItem.icon}"></img><p>${menuItem.title}</p>`;
         
     newDiv.appendChild(newLink);
@@ -38,3 +42,11 @@ function appendMenuItem(menuItem) {
     selector.appendChild(newLi);
 }
 
+export function loadSearchBar() {
+    const searchBar = document.querySelector("search");
+    searchBar.innerHTML = `
+    <form id="frmSearch">
+        <p>Search the Star Wars Wiki:</p>
+        <input type="search" placeholder="Search Here..." />
+    </form>`;
+}
