@@ -6,11 +6,9 @@ loadNavBar();
 loadSearchBar();
 if (window.location.pathname === "/search.html") {
     const searchResult = await searchForAsset(getParam("asset"), getParam("category"), "#grid-container");
-    console.log(searchResult);
     if (searchResult <= 0) {
         let container = document.querySelector("#grid-container");
-        container.innerHTML = `<h2>No results found for "${getParam("asset")}", or they have been removed from the archives by the Empire!</h2>`;
-
+        container.innerHTML = `<h2>No results found for "${getParam("asset")}" in ${getParam("category")}, or they have been removed from the archives by the Empire!</h2>`;
     }
 }
 
