@@ -91,9 +91,13 @@ export async function searchForAsset(inputElement, inputCategory, container) {
         if (results.results.length > 8){
             loadPagination(results);
         }
+        if ( results.results.length <= 0){
+            return 0;
+        }
     } catch (e) {
         console.log(e);
     }
+    return results.results.length;
 }
 
 export function loadPagination(dataResult) {

@@ -12,7 +12,6 @@ export async function favoritesHandler(e) {
         try {
             if (await addItemToFavorites(item)){
                 let showRemoveButton = document.querySelector(`[data-id="${e.target.dataset.id}"][data-action="remove"]`);
-                console.log(showRemoveButton);
                 showRemoveButton.setAttribute("class", "tile-button");
                 e.target.setAttribute("class", "tile-button hidden");
             } else {
