@@ -1,5 +1,5 @@
 
-import { getLocalStorage, setLocalStorage, getParam } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, getParam, logError } from "./utils.mjs";
 import { loadNavBar } from "./navigation.mjs";
 import { getAssetFromExternal } from "./external_services.mjs";
 
@@ -9,16 +9,35 @@ export async function favoritesHandler(e) {
     e.target.innerHTML = "Processing...";
     if (e.target.dataset.action === "add") {
         const item = await getAssetFromExternal(e.target.dataset.id, getParam("category"), "data");
-        await addItemToFavorites(item);
-        let showRemoveButton = document.querySelector(`[data-id="${e.target.dataset.id}"][data-action="remove"]`);
-        showRemoveButton.setAttribute("class", "tile-button");
+        try {
+            if (await addItemToFavorites(item)){
+                let showRemoveButton = document.querySelector(`[data-id="${e.target.dataset.id}"][data-action="remove"]`);
+                console.log(showRemoveButton);
+                showRemoveButton.setAttribute("class", "tile-button");
+                e.target.setAttribute("class", "tile-button hidden");
+            } else {
+                e.target.innerHTML = originalText;
+            }
+        } catch (error) {
+            logError("Could not add to favorites list: ", error);
+        }
     } else {
-        await removeItemFromFavorites(e.target.dataset.id);
-        let showButton = document.querySelector(`[data-id="${e.target.dataset.id}"][data-action="add"]`);
-        showButton.setAttribute("class", "tile-button");
+        try {
+            if (await removeItemFromFavorites(e.target.dataset.id)) {
+                let showButton = document.querySelector(`[data-id="${e.target.dataset.id}"][data-action="add"]`);
+                showButton.setAttribute("class", "tile-button");
+                e.target.setAttribute("class", "tile-button hidden");
+                if (window.location.pathname === "/favorites.html") {
+                    e.target.parentNode.parentNode.remove();
+                } 
+            } else {
+                e.target.innerHTML = originalText;
+            }
+        } catch (error) {
+            logError("Could not remove from favorites list: ", error);
+        }
     }
-    e.target.setAttribute("class", "tile-button hidden");
-    e.target.innerHTML = originalText;
+    //e.target.innerHTML = originalText;
     loadNavBar();
 }
 
@@ -30,7 +49,9 @@ export function removeItemFromFavorites(id) {
         // Use splice only if the item exists
         localArray.splice(existingItemIndex, 1);
         setLocalStorage("sw-favorites", localArray);
+        return true;
     }
+    return false;
 }
 
 export function addItemToFavorites(item) {
@@ -43,12 +64,14 @@ export function addItemToFavorites(item) {
       (element) => element.results[0].name === item.results[0].name);
 
     if (existingItemIndex === -1) {
-      // If the item is not in the cart, add it with a quantity of 1
+      // If the item is not in the cart, add it
       
       favoriteItems.push(item);
       // Update the cart in local storage
       setLocalStorage("sw-favorites", favoriteItems);
+      return true;
     }
+    return false;
  }
 
 export function checkForItemInFavorites(item) {

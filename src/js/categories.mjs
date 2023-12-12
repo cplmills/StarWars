@@ -1,7 +1,7 @@
-import { getAssetFromExternal, getAttributes, getCombinedJSON } from "./external_services.mjs";
-import { loadNavBar } from "./navigation.mjs";
-import { proper, getParam, getLocalStorage, setLocalStorage } from "./utils.mjs";
-import { addItemToFavorites, checkForItemInFavorites, favoritesHandler } from "./favorites";
+import { getAttributes, getCombinedJSON, getAssetsFromExternal } from "./external_services.mjs";
+import { proper, getParam } from "./utils.mjs";
+import { checkForItemInFavorites, favoritesHandler } from "./favorites";
+import { showImage, loadPagination } from "./navigation.mjs";
 
 export async function addTile(data, selector, category) {
     // create a new tile to be added to the page
@@ -15,6 +15,7 @@ export async function addTile(data, selector, category) {
     let newImg = document.createElement("img");
         newImg.setAttribute("class", "tile-img");
         newImg.src = newData.image;
+        newImg.addEventListener("click", (img) => {showImage(newData.image)});
         newElement.appendChild(newImg);
         
     let newTable = document.createElement("table");
@@ -79,3 +80,15 @@ export function translateCategory(input) {
         return "spaceships";
     }
 }
+
+export async function loadAssets() {
+    let parameters = getParam("category");
+    let dataResult = await getAssetsFromExternal(parameters, "data");
+    let container = document.querySelector("#grid-container");
+    container.innerHTML = "";
+    for (let i = 0; i < dataResult.results.length; i++) {
+      addTile(dataResult.results[i], container, parameters);
+    }
+    
+    loadPagination(dataResult);
+  }

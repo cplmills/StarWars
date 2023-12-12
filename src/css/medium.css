@@ -1,6 +1,7 @@
 @media only screen and (min-width: 600px) {
+  
   body {
-    background-image: url("../images/backgrounds/star-wars-plzcoaffexgf4h81.jpg");
+    background-image: url("../images/backgrounds/star-wars-medium.webp");
     background-color: rgb(0, 0, 0);
     background-position: top center;
     background-repeat: no-repeat;
@@ -8,61 +9,48 @@
     font-family: Quicksand, Roboto, system-ui;
   }
 
-  nav {
-    overflow: hidden;
+  header h1 {
+    font-size: 5rem;
   }
 
-  nav ul {
+  #search input{
+    margin: .8rem;
+    width: auto;
+    min-width: 20rem;
+  }
+  
+  #search select {
+    width: auto;
+  }
+    
+  #btnSubmit {
+    width: auto;
+  }
+
+  #nav_ul {
+    list-style-type: none;
+    padding: 0;
     display: flex;
-    margin: auto;
-    width: fit-content;
-    flex-wrap: wrap;
     flex-direction: row;
-  }
+    /* Optionally, you can adjust other properties like justify-content to control alignment */
+    justify-content: space-around;
+}
 
-  nav a {
-    color: white;
-  }
+#nav_ul li {
+    text-align: center; /* Center the content within each li */
+    margin-bottom: 20px; /* Adjust the margin as needed for vertical spacing */
+}
 
-  nav ul li div a p {
-    text-align: center;
-  }
+#nav_ul a {
+    text-decoration: none;
+    font-weight: normal;
+    display: block; /* Make the whole block clickable */
+}
 
-  nav ul li div a img {
-    max-width: 5rem;
-    height: 5rem;
-  }
-
-  nav ul li div a p {
-    float: none;
-    vertical-align: middle;
-  }
-
-  nav ul li div img:hover {
-    color: rgba(255, 255, 255, 1);
-    -webkit-filter: drop-shadow(5px 5px 5px rgba(30, 132, 242, 1));
-    filter: drop-shadow(5px 5px 5px rgb(254, 254, 254));
-  }
-
-  nav div {
-    display: block;
-    float: clear;
-    padding-top: 1rem;
-  }
-
-  nav ul div:hover {
-    border: 0;
-  }
-
-  nav div p {
-    display: block;
-  }
-
-  nav ul li div {
-    padding: 0rem 1rem;
-    display: flex;
-    flex-direction: column;
-  }
+#nav_ul img {
+    margin-bottom: 10px; /* Adjust the margin as needed */
+    min-width: 6rem;
+}
 
   #search p,
   main p {
@@ -72,4 +60,10 @@
   #search p {
     display: inline-block;
   }
+
+  #contactForm button {
+    width: auto;
+  }
+
+
 }

@@ -37,7 +37,6 @@ function encodeParametersFromArray(baseUrl, parametersArray){
 export async function getAssetsFromExternal(asset, dataOrImage, options = returnParametersAsArray()) {
     let baseURL = encodeParametersFromArray(getURL(dataOrImage) + (asset ? asset : ""), options);
     try {
-        console.log(baseURL); 
         const response = await fetch(baseURL);
         const data = await response.json();
         return data;
@@ -99,7 +98,7 @@ export async function getCombinedJSON(name, category) {
     if (imgResult.length === 1 ) {
         result.results[0].image = imgResult[0].image;    
     } else {
-        result.results[0].image = "../images/censored.png";
+        result.results[0].image = "../images/censored.webp";
     }
 
     return result.results[0];

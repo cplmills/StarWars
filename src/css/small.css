@@ -20,8 +20,8 @@
 }
 
 body {
-  background-image: url("../images/backgrounds/small.jpg");
-  background-color: rgb(0, 0, 0);
+  background-image: url("../images/backgrounds/small.webp");
+  background-color: #150F0F;
   background-position: top center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -41,12 +41,15 @@ header h1 {
   text-align: center;
   padding-top: 2.5rem;
   font-family: "Death Star";
-  font-size: 5rem;
+  font-size: 3rem;
   color: white;
   animation: neon 0.08s ease-in-out infinite alternate;
   margin: auto;
 }
 
+h2 {
+  color: white;
+}
 @keyframes neon {
   from {
     text-shadow: 0 0 6px rgba(202, 228, 225, 0.92),
@@ -60,6 +63,17 @@ header h1 {
       0 0 22px rgba(30, 132, 242, 0.84), 0 0 38px rgba(30, 132, 242, 0.88),
       0 0 60px rgba(30, 132, 242, 1);
   }
+}
+
+#error {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  background-color: #9E2D22;
+  color: white;
+  width: 100%;
+  padding-left: 2rem;
+  text-align: center;
 }
 
 main,
@@ -77,36 +91,75 @@ nav,
 
 #search input{
   margin: .8rem;
-  min-width: 50%;
+  width: 90%;
   font-size: 16px;
-  border: 1px solid black;
+  border: 1px solid #150F0F;
   border-radius: .3rem;
   padding: 2px;
   padding-left: 10px;
+  height: 2.5rem;
 }
 
 #search select {
-  margin: 1rem;
+  margin: 1rem 1rem 0 1rem;
   font-size: 16px;
-  border: 1px solid black;
+  border: 1px solid #150F0F;
   cursor: pointer;
   background-color: white;
   border-radius: 0.3rem;
+  width: 90%;
 }
 
 #search p,
 main p {
   font-family: Quicksand, Roboto, system-ui;
+  font-size: 18px;
   color: white;
   margin: 1rem;
   display: inline-block;
   display: none;
 }
 
-
-
 #search input:hover {
   box-shadow: 0 0 15px 4px rgba(30, 132, 242, 0.06);
+}
+
+#btnSubmit {
+  font-size: 18px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  width: 90%;
+  margin: auto 1rem;
+  margin-bottom: 1rem;
+  border-radius: .5rem;
+  
+}
+#nav_ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#nav_ul li {
+  margin: auto; /* Adjust the margin as needed */
+}
+
+#nav_ul a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+#nav_ul img {
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+
+#nav_ul p {
+  margin-left: 1rem;
 }
 
 nav {
@@ -115,58 +168,25 @@ nav {
 
 nav a {
   color: white;
-}
-
-nav ul div {
-  display: inline-block;
-  width: 100%;
-}
-
-nav ul li {
-  text-decoration: none;
-  list-style: none;
-}
-
-nav ul li div {
-  padding-left: 2rem;
+  font-size: 20px;
 }
 
 @media only screen and (max-width: 600px) {
   nav ul div:hover {
-    background-color: crimson;
+    background-color: 9E2D22;
   }
 }
 
 nav ul li div a img {
-  float: left;
+  /* float: left; */
   max-width: 3rem;
   transition: all 0.2s ease-in-out;
 }
 
-nav ul li div a p {
-  float: left;
-  vertical-align: middle;
-}
-
-nav ul li div a img:hover {
+nav ul li div a img:hover, nav ul li div a p:hover {
   color: rgba(255, 255, 255, 1);
   -webkit-filter: drop-shadow(5px 5px 5px rgba(30, 132, 242, 1));
   filter: drop-shadow(5px 5px 5px rgb(254, 254, 254));
-}
-
-nav ul {
-  margin-block-start: 0;
-  padding: 0;
-}
-
-nav div {
-  display: block;
-  float: clear;
-  padding-top: 1rem;
-}
-
-nav div p {
-  display: block;
 }
 
 main {
@@ -174,7 +194,7 @@ main {
   overflow: auto;
 }
 
-main #indeximg {
+#indeximg {
   width: 12rem;
   float: left;
   padding: 2rem;
@@ -187,7 +207,7 @@ main p {
 }
 
 .element-image img {
-  width: 22rem;
+  max-width: 100%;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   border: 1px solid white;
@@ -213,10 +233,12 @@ main p {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .tile-table {
-  width: 22rem;
+  width: 100%;
   min-width: 22rem;
   margin: auto;
 }
@@ -247,12 +269,13 @@ main p {
   clear: both;
   float: left;
   width: 100%;
-  background-color: red;
-  border: 2px solid black;
-  border-radius: 12px;
+  background-color: #9E2D22;
+  border: 2px solid white;
+  border-radius: .5rem;
   padding: .5rem;
   color: white;
   margin-top: 1rem;
+  font-size: 1rem;
 
 }
 
@@ -281,7 +304,7 @@ main p {
 }
 
 .loader path {
-  stroke: black;
+  stroke: #150F0F;
   stroke-width: 30;
   fill: transparent;
 
@@ -351,6 +374,123 @@ main p {
 }
 
 #pagination a:hover {
-  color: black;
+  color: #150F0F;
   text-shadow: 0 0 10px white;
+}
+
+
+#FSDiv {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow:auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#FSClose {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 5vp;
+  height: 5vp;
+}
+
+#FSImg {
+  border: 1px solid black;
+  padding: 1rem;
+  background-color: white;
+  max-width: 80vw; 
+  margin: auto;
+}
+
+#imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+footer {
+  clear: both;
+  bottom: 0;
+  height: 4rem;
+  width: 100%;
+  color: white;
+  background-color: #150F0F;
+  margin-top: 2rem;
+  border: 1px solid white;
+  border-radius: 0.5rem;
+}
+
+footer p {
+margin: auto;
+padding-top: 1.5rem;
+text-align: center;
+}
+
+footer a {
+  text-decoration: none;
+  color: red;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+input:invalid,
+textarea:invalid {
+    border: 1px solid red;
+    
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+#conactForm {
+  display: flex;
+  flex-direction: column;
+}
+
+#contactForm label {
+  color: white;
+  font-size: 1.5rem;
+  margin: 15px;
+  margin-bottom: 5px;
+  display: block; 
+}
+
+#contactForm input {
+  font-size: 1.5rem;
+  margin: 10px;
+  border-radius: .5rem;
+  border: 1px solid black;
+  padding: 5px;
+  width: 90%;
+}
+
+#contactForm textarea {
+  padding: 5px;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  width: 300px; 
+  display: inline-block; 
+  border-radius: .5rem;
+  margin-left: 1rem;
+  border: 1px solid #150F0F;
+ 
+}
+
+#contactForm button {
+  font-size: 1.2rem;
+  padding: 1rem;
+  margin-left: 1rem;
+  border-radius: .5rem;
+  width: 90%;
 }

@@ -2,7 +2,7 @@
   "menu_item": [
     {
       "title": "Planets",
-      "icon": "../images/planet_icon.png",
+      "icon": "../images/planet_icon-2.webp",
       "parameter": "planets"
     },
     {
@@ -12,12 +12,12 @@
     },
     {
       "title": "Vehicles",
-      "icon": "../images/vehicles_icon.png",
+      "icon": "../images/vehicles_icon.webp",
       "parameter": "vehicles"
     },
     {
       "title": "People",
-      "icon": "../images/people_icon.png",
+      "icon": "../images/people_icon.webp",
       "parameter": "people"
     },
     {
@@ -27,7 +27,7 @@
     },
     {
       "title": "Favorites",
-      "icon": "../images/favorites_icon.png",
+      "icon": "../images/favorites_icon.webp",
       "parameter": "favorites"
     }
   ]
